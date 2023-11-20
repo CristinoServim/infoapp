@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:infoapp/app/app_widget.dart';
+import 'package:infoapp/app/auth/auth_provider.dart';
 import 'package:infoapp/app/themes/app_theme_data.dart';
 import 'package:provider/provider.dart';
 
@@ -10,9 +11,8 @@ class AppModule extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        Provider(
-          create: (_) => Object(),
-        )
+        ChangeNotifierProvider(create: (_) => AuthProvider()),
+        // Adicione outros providers conforme necessário
       ],
       child: MaterialApp(
         title: 'InfoConferencia',

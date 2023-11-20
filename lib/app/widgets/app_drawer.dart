@@ -11,24 +11,37 @@ class AppDrawer extends StatefulWidget {
 class _AppDrawerState extends State<AppDrawer> {
   @override
   Widget build(BuildContext context) {
+    // final Color drawerHeaderColor = Theme.of(context).primaryColor;
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          const DrawerHeader(
+          DrawerHeader(
             decoration: BoxDecoration(
-              color: Colors.blue,
+              color: Theme.of(context).colorScheme.primary,
             ),
             child: Text(
               'Menu',
               style: TextStyle(
-                color: Color.fromARGB(255, 162, 161, 161),
+                fontFamily: 'Roboto',
+                color: Theme.of(context).colorScheme.secondary,
                 fontSize: 24,
               ),
             ),
           ),
           ListTile(
-            title: const Text('Login'),
+            leading: Icon(
+              Icons.login,
+              color: Theme.of(context).colorScheme.primary,
+            ),
+            title: Text(
+              'Login',
+              style: TextStyle(
+                fontFamily: 'Roboto',
+                color: Theme.of(context).colorScheme.primary,
+                fontSize: 19,
+              ),
+            ),
             onTap: () {
               Navigator.pop(context); // Fecha o menu
               Navigator.push(

@@ -1,22 +1,40 @@
+// login_page.dart
 import 'package:flutter/material.dart';
+import 'package:infoapp/app/auth/authentication_service.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    String username = '';
+    String password = '';
+
     return Scaffold(
       body: Container(
-        color: Theme.of(context).primaryColor,
+        color: Theme.of(context).colorScheme.primary,
         child: Center(
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
-                  Icons.account_circle,
-                  size: 100,
-                  color: Theme.of(context).primaryColor,
+                Container(
+                  width: 110,
+                  height: 110,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: Theme.of(context).colorScheme.secondary,
+                      width: 2.0,
+                    ),
+                  ),
+                  child: ClipOval(
+                    child: Image.asset(
+                      'assets/images/logo.png',
+                      width: 100,
+                      height: 100,
+                    ),
+                  ),
                 ),
                 Center(
                   child: Card(
@@ -27,16 +45,32 @@ class LoginPage extends StatelessWidget {
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          const TextField(
-                            decoration: InputDecoration(labelText: 'Usuario'),
+                          TextField(
+                            onChanged: (value) {
+                              username = value;
+                            },
+                            decoration:
+                                const InputDecoration(labelText: 'Usuario'),
                           ),
-                          const TextField(
+                          TextField(
+                            onChanged: (value) {
+                              password = value;
+                            },
                             obscureText: true,
-                            decoration: InputDecoration(labelText: 'Senha'),
+                            decoration:
+                                const InputDecoration(labelText: 'Senha'),
                           ),
                           const SizedBox(height: 16),
                           ElevatedButton(
-                              onPressed: () {}, child: const Text('Entrar'))
+                            onPressed: () {
+                              AuthenticationService.authenticate(
+                                username: username,
+                                password: password,
+                                context: context,
+                              );
+                            },
+                            child: const Text('Entrar'),
+                          ),
                         ],
                       ),
                     ),
