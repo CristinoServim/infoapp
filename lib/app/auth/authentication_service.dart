@@ -33,7 +33,8 @@ class AuthenticationService {
     }
 
     final Dio dio = Dio();
-    const String apiUrl = 'https://api.infobrasilsistemas.com.br/v1-ibra/login';
+    // const String apiUrl = 'https://api.infobrasilsistemas.com.br/v1-ibra/login';
+    const String apiUrl = 'http://192.168.253.94:5001/v1-ibra/login';
 
     try {
       final response = await dio.post(
@@ -43,7 +44,7 @@ class AuthenticationService {
           'usu_pass': password,
         },
       );
-
+      print('minha response: $response');
       if (response.statusCode == 200) {
         final SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString('token', response.data['token']);

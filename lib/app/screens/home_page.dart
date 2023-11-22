@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:infoapp/app/auth/auth_provider.dart';
 import 'package:infoapp/app/screens/login_page.dart';
 import 'package:infoapp/app/widgets/app_drawer.dart';
+import 'package:infoapp/app/widgets/my_app_bar.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -37,19 +38,7 @@ class _HomePageState extends State<HomePage> {
     return Consumer<AuthProvider>(
       builder: (context, authProvider, child) {
         return Scaffold(
-          appBar: AppBar(
-            title: Text(
-              "Infobrasil",
-              style: TextStyle(
-                fontFamily: 'Roboto',
-                fontSize: 25,
-                color: Theme.of(context).colorScheme.secondary,
-              ),
-            ),
-            iconTheme: IconThemeData(
-              color: Theme.of(context).colorScheme.secondary,
-            ),
-          ),
+          appBar: const MyAppBar(titleText: 'Infobrasil'),
           drawer: const AppDrawer(),
           body: Center(
             child: Container(
@@ -59,7 +48,7 @@ class _HomePageState extends State<HomePage> {
                 shape: BoxShape.circle,
                 border: Border.all(
                   color: Theme.of(context).colorScheme.primary,
-                  width: 1.0,
+                  width: 3.0,
                 ),
               ),
               child: ClipOval(

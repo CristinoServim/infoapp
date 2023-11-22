@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:infoapp/app/screens/conferencia_venda_screen.dart';
 import 'package:infoapp/app/screens/login_page.dart';
 
 class AppDrawer extends StatefulWidget {
@@ -47,6 +48,28 @@ class _AppDrawerState extends State<AppDrawer> {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const LoginPage()),
+              );
+            },
+          ),
+          ListTile(
+            leading: Icon(
+              Icons.check,
+              color: Theme.of(context).colorScheme.primary,
+            ),
+            title: Text(
+              'Conferência',
+              style: TextStyle(
+                fontFamily: 'Roboto',
+                color: Theme.of(context).colorScheme.primary,
+                fontSize: 19,
+              ),
+            ),
+            onTap: () {
+              Navigator.pop(context); // Fecha o menu
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const ConferenciaVendaScreen()),
               );
             },
           ),
