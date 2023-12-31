@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:infoapp/app/auth/auth_provider.dart';
 import 'package:infoapp/app/screens/conferencia_venda_screen.dart';
 import 'package:infoapp/app/screens/login_page.dart';
+import 'package:infoapp/app/util/navigation_utils.dart';
+import 'package:provider/provider.dart';
 
 class AppDrawer extends StatefulWidget {
   const AppDrawer({Key? key}) : super(key: key);
@@ -47,7 +50,7 @@ class _AppDrawerState extends State<AppDrawer> {
               Navigator.pop(context); // Fecha o menu
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const LoginPage()),
+                MaterialPageRoute(builder: (context) => LoginPage()),
               );
             },
           ),
@@ -66,11 +69,10 @@ class _AppDrawerState extends State<AppDrawer> {
             ),
             onTap: () {
               Navigator.pop(context); // Fecha o menu
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const ConferenciaVendaScreen()),
-              );
+              final authProvider =
+                  Provider.of<AuthProvider>(context, listen: false);
+              NavigationUtils.navigateToDestination(context,
+                  const ConferenciaVendaScreen(), authProvider.hasPermission);
             },
           ),
           // Adicione outros itens do menu aqui
