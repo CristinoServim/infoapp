@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:infoapp/app/auth/auth_provider.dart';
-import 'package:infoapp/app/screens/conferencia_venda_screen.dart';
-import 'package:infoapp/app/screens/login_page.dart';
+import 'package:infoapp/app/screens/vendas/vendas_conferencias/conferencia_venda_screen.dart';
+import 'package:infoapp/app/screens/auth/login_page.dart';
 import 'package:infoapp/app/util/navigation_utils.dart';
 import 'package:provider/provider.dart';
 

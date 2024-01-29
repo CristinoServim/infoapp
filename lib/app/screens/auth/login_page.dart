@@ -11,8 +11,8 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String username = 'infoapi';
-    String password = '123456';
+    String username = '';
+    String password = '';
 
     return Scaffold(
       body: Container(

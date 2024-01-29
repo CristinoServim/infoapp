@@ -34,7 +34,6 @@ class AuthenticationService {
       );
       return;
     }
-    final scaffoldMessenger = ScaffoldMessenger.of(context);
 
     // Mostrar CircularProgressIndicator enquanto aguarda a conclusão do Future
     showDialog(
@@ -50,7 +49,6 @@ class AuthenticationService {
       final apiService = ApiService.create();
       const String apiUrl = AppConfig.apiUrlLogin;
       var message;
-      var errorMessages;
 
       final response = await apiService.post(
         apiUrl,
@@ -80,7 +78,7 @@ class AuthenticationService {
         if (response.data is Map) {
           // Se for um mapa, verifica se contém 'errors' ou 'message'
           if (response.data.containsKey('errors')) {
-            errorMessages = response.data['errors'];
+            message = response.data['errors'];
           } else if (response.data.containsKey('message')) {
             message = response.data['message'];
           } else {
@@ -98,8 +96,6 @@ class AuthenticationService {
           // Se for uma string direta, atribui à variável de mensagem
           message = response.data;
         }
-        // var message = response.data['message'];
-        // var errorMessages = response.data['errors'];
 
         if (message != null) {
           SnackbarUtils.exibirSnackbar(context, message);

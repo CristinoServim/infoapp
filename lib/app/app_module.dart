@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:infoapp/app/auth/auth_provider.dart';
 import 'package:infoapp/app/config/app_keys.dart';
-import 'package:infoapp/app/screens/conferencia_venda_screen.dart';
+import 'package:infoapp/app/screens/vendas/vendas_conferencias/conferencia_venda_screen.dart';
 import 'package:infoapp/app/screens/home_page.dart';
-import 'package:infoapp/app/screens/login_page.dart';
-import 'package:infoapp/app/screens/register_page.dart';
+import 'package:infoapp/app/screens/auth/login_page.dart';
+import 'package:infoapp/app/screens/auth/register_page.dart';
 import 'package:infoapp/app/screens/splash_screen.dart';
 import 'package:infoapp/app/themes/app_theme_data.dart';
 import 'package:provider/provider.dart';

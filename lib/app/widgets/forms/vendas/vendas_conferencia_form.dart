@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:infoapp/app/config/app_config.dart';
 import 'package:infoapp/app/models/vendas/vendas_conferencia/vendas_conf.dart';
-import 'package:infoapp/app/screens/conferencia_criar_entregas_screen.dart';
+import 'package:infoapp/app/screens/vendas/vendas_conferenecias_entregas/conferencia_criar_entregas_screen.dart';
 import 'package:infoapp/app/services/api_service.dart';
 import 'package:infoapp/app/services/service_barcodescan.dart';
 import 'package:infoapp/app/util/SnackbarUtils.dart';
@@ -29,7 +29,6 @@ class VendasConferenciaFormState extends State<VendasConferenciaForm> {
   List<VedasConfTotal> vendasConfTotalPendente = [];
   List<VedasConfTotal> vendasConfTotalFiltrado = [];
 
-  final String url = AppConfig.apiUrlVendasConferencias;
   final ApiService _apiService = ApiService.create();
 
   @override
@@ -135,37 +134,6 @@ class VendasConferenciaFormState extends State<VendasConferenciaForm> {
       ),
     );
   }
-
-  // void _exibirSnackbar(String mensagem,
-  //     {String? actionText,
-  //     Color? backgroundColor,
-  //     Color? actionTextColor,
-  //     VoidCallback? onPressed}) {
-  //   String texto = actionText ?? 'Fechar';
-
-  //   ScaffoldMessenger.of(context).showSnackBar(
-  //     SnackBar(
-  //         content: Text(
-  //           mensagem,
-  //           style: TextStyle(color: Colors.white), // Cor do texto
-  //         ),
-  //         duration: const Duration(seconds: 4),
-  //         backgroundColor: backgroundColor ??
-  //             Theme.of(context).colorScheme.primary, // Cor de fundo
-  //         action: SnackBarAction(
-  //           label: texto,
-  //           textColor: actionTextColor ??
-  //               Theme.of(context)
-  //                   .colorScheme
-  //                   .secondary, // Cor do texto do botão de ação
-  //           onPressed: onPressed ??
-  //               () {
-  //                 // Função padrão para fechar o SnackBar
-  //                 ScaffoldMessenger.of(context).hideCurrentSnackBar();
-  //               },
-  //         )),
-  //   );
-  // }
 
   void _mostrarDialogoFaltaConferir() {
     showDialog(
@@ -327,6 +295,8 @@ class VendasConferenciaFormState extends State<VendasConferenciaForm> {
 
   void _enviarConferencia() async {
     // Obtenha os valores dos controladores
+
+    final String url = AppConfig.apiUrlVendasConferencias;
     String venNumero = _vendaControllerEC.text;
     String proCodigo = _codigoProdutoControllerEC.text;
     double quantidadePecas =
@@ -365,7 +335,7 @@ class VendasConferenciaFormState extends State<VendasConferenciaForm> {
             //_exibirSnackbar(message);
           } else if (statusCode == 200 || statusCode == 422) {
             setState(() {
-              _conferenciaEnviada = true;
+              _conferenciaEnviada = false;
             });
 
             SnackbarUtils.exibirSnackbar(context, message,

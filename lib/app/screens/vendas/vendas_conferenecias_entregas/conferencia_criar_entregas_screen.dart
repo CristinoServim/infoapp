@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:infoapp/app/widgets/my_app_bar.dart';
-import 'package:infoapp/app/widgets/vendas/criar_entregas_form.dart';
+import 'package:infoapp/app/widgets/forms/vendas/criar_entregas_form.dart';
 
 class ConferenciaCriarEntregasScreen extends StatefulWidget {
   final String numeroVenda;

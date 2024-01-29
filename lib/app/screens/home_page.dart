@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:infoapp/app/auth/auth_provider.dart';
-import 'package:infoapp/app/screens/conferencia_venda_screen.dart';
+import 'package:infoapp/app/screens/vendas/vendas_conferencias/conferencia_venda_screen.dart';
 import 'package:infoapp/app/util/navigation_utils.dart';
 import 'package:infoapp/app/widgets/app_drawer.dart';
 import 'package:infoapp/app/widgets/my_app_bar.dart';

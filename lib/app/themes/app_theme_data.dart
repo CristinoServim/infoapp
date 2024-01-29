@@ -5,6 +5,7 @@ class AppTheme {
     colorScheme: const ColorScheme.light(
       primary: Color(0xFF015738),
       secondary: Color(0xFFffd525),
+      tertiary: Color(0xFF808080),
     ),
   );
 
@@ -12,6 +13,7 @@ class AppTheme {
     colorScheme: const ColorScheme.dark(
       primary: Color(0xFF015738),
       secondary: Color(0xFFffd525),
+      tertiary: Color(0xFF808080),
     ),
   );
 }

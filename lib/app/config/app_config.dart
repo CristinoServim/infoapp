@@ -1,5 +1,6 @@
 class AppConfig {
-  // const String apiUrl = 'https://api.infobrasilsistemas.com.br/v1-ibra/login';
+  // static const String apiUrlBase =
+  //     'https://api.infobrasilsistemas.com.br/v1-ibra';
   static const String apiUrlBase = 'http://192.168.1.210:5003/v1-ibra';
   // static const String apiUrlBase = 'http://192.168.253.94:5003/v1-ibra';
   //urls auth
@@ -10,6 +11,8 @@ class AppConfig {
       '$apiUrlBase/vendasconferencias';
   static const String apiUrlvendasConfTotal =
       '$apiUrlBase/consultarvendasconftotal';
+  static const String apiUrlVendaConferida =
+      '$apiUrlBase/listarVendasConferida';
 
   //urls entregasconferencia
   static const String apiUrlCriarEntregasConferencia =

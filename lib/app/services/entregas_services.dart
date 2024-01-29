@@ -8,7 +8,6 @@ class EntregasService {
 
   EntregasService(this._httpService);
 
-  final ApiService _apiService = ApiService.create();
   final url = AppConfig.apiUrlConsultaPrestadoresConferencia;
 
   Future<void> consultaPrestadores() async {
