@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:infoapp/app/interfaces/vendas/vendas_conferencias/venda_conferida_interface.dart';
+import 'package:infoapp/app/util/vendas_util/converte_operacao_util.dart';
+import 'package:infoapp/app/widgets/buttons/custon_elevated_button.dart';
 
 class VendasList extends StatelessWidget {
   final List<IVendaConferidaInterface> listaDeVendasConferidas;
@@ -9,6 +11,7 @@ class VendasList extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
+    print(listaDeVendasConferidas);
     return ListView.builder(
       itemCount: listaDeVendasConferidas.length,
       itemBuilder: (context, index) {
@@ -62,7 +65,7 @@ class VendasList extends StatelessWidget {
                               ListTile(
                                 title: Text('Produto: ${item.proDescricao}'),
                                 subtitle: Text(
-                                  'Qtde Venda: ${item.ivdQtde} | Qtde a Conferir: ${item.ivdQtde * item.proEtiq}  | Qtde Conferida: ${item.ivdQtdeConf} | Operação: ${item.ivdOperacao}',
+                                  'Qtde Venda: ${item.ivdQtde} | Qtde a Conferir: ${item.ivdQtde * item.proEtiq}  | Qtde Conferida: ${item.ivdQtdeConf} | Operação: ${ConverteOperacaoUUtil.getDescricaoOperacao(item.ivdOperacao)}',
                                 ),
                                 // Adicione mais informações conforme necessário
                               ),
@@ -81,17 +84,18 @@ class VendasList extends StatelessWidget {
                 mainAxisAlignment:
                     MainAxisAlignment.end, // Alinha o botão à direita
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: ElevatedButton(
+                  Expanded(
+                    child: CustomElevatedButton(
+                      text: 'Fechar',
+                      icon: Icons.list,
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      child: const Text('Fechar'),
                     ),
                   ),
                 ],
               ),
+              SizedBox(height: 40)
             ],
           ),
         );

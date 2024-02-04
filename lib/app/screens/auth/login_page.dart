@@ -3,11 +3,36 @@ import 'package:flutter/material.dart';
 import 'package:infoapp/app/auth/authentication_service.dart';
 import 'package:infoapp/app/widgets/buttons/custon_elevated_button.dart';
 import 'package:validatorless/validatorless.dart';
+import 'package:video_player/video_player.dart';
 
-class LoginPage extends StatelessWidget {
-  final _formKey = GlobalKey<FormState>();
-
+class LoginPage extends StatefulWidget {
   LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final _formKey = GlobalKey<FormState>();
+  late VideoPlayerController _videoPlayerController;
+
+  @override
+  void initState() {
+    super.initState();
+    _videoPlayerController =
+        VideoPlayerController.asset('assets/videos/LoadInfobrasil.mp4')
+          ..initialize().then((context) {
+            _videoPlayerController.play();
+            _videoPlayerController.setLooping(true);
+            setState(() {});
+          });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _videoPlayerController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +40,7 @@ class LoginPage extends StatelessWidget {
     String password = '';
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Container(
         color: Theme.of(context).colorScheme.primary,
         child: Center(

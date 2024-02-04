@@ -665,18 +665,18 @@ class CriarEntregasFormState extends State<CriarEntregasForm> {
   }
 
   void redirecionar(String numeroVenda) {
-    print(listaDeVendasConferidas[0]);
-    print('Detalhes dos itens de venda:');
-    for (var itemVenda in listaDeVendasConferidas[0].itensVenda) {
-      print('Código do produto: ${itemVenda.proCodigo}');
-      print('Descrição do produto: ${itemVenda.proDescricao}');
-      print('Etiq: ${itemVenda.proEtiq}');
-      print('Número do item: ${itemVenda.ivdNumero}');
-      print('Qtde: ${itemVenda.ivdQtde}');
-      print('Qtde Conf: ${itemVenda.ivdQtdeConf}');
-      print('Operação: ${itemVenda.ivdOperacao}');
-      print('----------------------');
-    }
+    //print(listaDeVendasConferidas[0]);
+    //print('Detalhes dos itens de venda:');
+    // for (var itemVenda in listaDeVendasConferidas[0].itensVenda) {
+    //   print('Código do produto: ${itemVenda.proCodigo}');
+    //   print('Descrição do produto: ${itemVenda.proDescricao}');
+    //   print('Etiq: ${itemVenda.proEtiq}');
+    //   print('Número do item: ${itemVenda.ivdNumero}');
+    //   print('Qtde: ${itemVenda.ivdQtde}');
+    //   print('Qtde Conf: ${itemVenda.ivdQtdeConf}');
+    //   print('Operação: ${itemVenda.ivdOperacao}');
+    //   print('----------------------');
+    // }
 
     Navigator.push(
       context,
@@ -734,7 +734,6 @@ class CriarEntregasFormState extends State<CriarEntregasForm> {
 
       if (response.statusCode == 200) {
         if (response.data != null) {
-          print(response.data);
           listaDeVendasConferidas = (response.data as List<dynamic>)
               .map((item) {
                 try {
@@ -941,27 +940,16 @@ class CriarEntregasFormState extends State<CriarEntregasForm> {
           ),
           const SizedBox(height: 25),
           CustomElevatedButton(
-            text: 'Criar Entrega e Finalizar',
+            text: 'Criar Entrega ',
             icon: Icons.add,
             onPressed: () async {
               if (_formKey.currentState?.validate() ?? false) {
-                bool sucesso = await _criarEntrega();
-                if (sucesso) {
-                  _vendaControllerEC.clear();
-                  Navigator.pushReplacementNamed(context, '/conferencia');
-                }
+                await _criarEntrega();
+                // if (sucesso) {
+                //   _vendaControllerEC.clear();
+                //   Navigator.pushReplacementNamed(context, '/conferencia');
+                // }
               }
-            },
-          ),
-          const SizedBox(height: 16),
-          CustomElevatedButton(
-            text: 'Finalizar sem Entrega',
-            icon: Icons.exit_to_app,
-            onPressed: () {
-              setState(() {
-                _vendaControllerEC.clear();
-                Navigator.pushReplacementNamed(context, '/conferencia');
-              });
             },
           ),
           const SizedBox(height: 16),
@@ -970,6 +958,17 @@ class CriarEntregasFormState extends State<CriarEntregasForm> {
             icon: Icons.list,
             onPressed: () async {
               await _listarVendaConferida();
+            },
+          ),
+          const SizedBox(height: 16),
+          CustomElevatedButton(
+            text: 'Finalizar',
+            icon: Icons.exit_to_app,
+            onPressed: () {
+              setState(() {
+                _vendaControllerEC.clear();
+                Navigator.pushReplacementNamed(context, '/conferencia');
+              });
             },
           ),
         ],

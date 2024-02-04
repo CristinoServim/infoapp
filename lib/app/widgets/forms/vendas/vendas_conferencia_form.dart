@@ -72,6 +72,19 @@ class VendasConferenciaFormState extends State<VendasConferenciaForm> {
                 Validatorless.required('Campo obrigatório'),
                 Validatorless.number('Deve ser um número'),
               ]),
+              onFieldSubmitted: (_) {
+                // Mover o foco para o campo "Código do Produto" quando o usuário pressionar 'next'
+                FocusScope.of(context).requestFocus(_codigoProdutoFocus);
+              },
+            ),
+            const SizedBox(height: 16),
+            TextFormField(
+              controller: _codigoProdutoControllerEC,
+              decoration: const InputDecoration(labelText: 'Código do Produto'),
+              validator: Validatorless.multiple([
+                Validatorless.required('Campo obrigatório'),
+              ]),
+              focusNode: _codigoProdutoFocus,
             ),
             const SizedBox(height: 16),
             TextFormField(
@@ -83,14 +96,6 @@ class VendasConferenciaFormState extends State<VendasConferenciaForm> {
                 Validatorless.required('Campo obrigatório'),
                 Validatorless.numbersBetweenInterval(
                     0.1, 100000, 'Deve ser um número'),
-              ]),
-            ),
-            const SizedBox(height: 16),
-            TextFormField(
-              controller: _codigoProdutoControllerEC,
-              decoration: const InputDecoration(labelText: 'Código do Produto'),
-              validator: Validatorless.multiple([
-                Validatorless.required('Campo obrigatório'),
               ]),
             ),
             const SizedBox(height: 32),
@@ -245,7 +250,7 @@ class VendasConferenciaFormState extends State<VendasConferenciaForm> {
             }
           }
         } else if (errorMessage != null) {
-          if (errorMessage == "Consulta realizada com sucesso sem resultado") {
+          if (errorMessage == "Consulta realizada sem resultado") {
             resposta = true;
           } else {
             SnackbarUtils.exibirSnackbar(context, 'Erro na consulta');
@@ -334,10 +339,6 @@ class VendasConferenciaFormState extends State<VendasConferenciaForm> {
 
             //_exibirSnackbar(message);
           } else if (statusCode == 200 || statusCode == 422) {
-            setState(() {
-              _conferenciaEnviada = false;
-            });
-
             SnackbarUtils.exibirSnackbar(context, message,
                 statusCode: response.statusCode);
           } else {
