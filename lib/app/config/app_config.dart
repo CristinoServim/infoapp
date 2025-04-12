@@ -1,7 +1,7 @@
 class AppConfig {
-  // static const String apiUrlBase =
-  //     'https://api.infobrasilsistemas.com.br/v1-ibra';
-  static const String apiUrlBase = 'http://192.168.1.210:5003/v1-ibra';
+  static const String apiUrlBase =
+      'https://api.infobrasilsistemas.com.br/v1-ibra';
+  //static const String apiUrlBase = 'http://192.168.1.210:5003/v1-ibra';
   // static const String apiUrlBase = 'http://192.168.253.94:5003/v1-ibra';
   //urls auth
   static const String apiUrlLogin = '$apiUrlBase/login';

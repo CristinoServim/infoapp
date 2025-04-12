@@ -59,12 +59,11 @@ class RegisterPage extends StatelessWidget {
                               },
                               decoration:
                                   const InputDecoration(labelText: 'Usuário'),
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Campo obrigatório';
-                                }
-                                return null;
-                              },
+                              validator: Validatorless.multiple([
+                                Validatorless.required('O campo é obrigatório'),
+                                Validatorless.email(
+                                    'Insira um e-mail válido no nome de usuário'),
+                              ]),
                             ),
                             TextFormField(
                               onChanged: (value) {

@@ -108,6 +108,7 @@ class _LoginPageState extends State<LoginPage> {
                                   password: password,
                                   context: context,
                                 );
+
                                 // }
                               },
                               text: 'Entrar',

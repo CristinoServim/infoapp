@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:infoapp/app/widgets/forms/vendas/vendas_conferenciav1_form.dart';
 import 'package:infoapp/app/widgets/my_app_bar.dart';
-import 'package:infoapp/app/widgets/forms/vendas/vendas_conferencia_form.dart';
 
 class ConferenciaVendaScreen extends StatefulWidget {
   const ConferenciaVendaScreen({Key? key}) : super(key: key);
@@ -17,7 +17,7 @@ class ConferenciaVendaScreenState extends State<ConferenciaVendaScreen> {
       body: Padding(
         padding: EdgeInsets.all(16.0),
         child: SingleChildScrollView(
-          child: VendasConferenciaForm(),
+          child: VendasConferenciaV1Form(),
         ),
       ),
     );

@@ -11,14 +11,14 @@ import 'package:infoapp/app/widgets/buttons/custon_elevated_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:validatorless/validatorless.dart';
 
-class VendasConferenciaForm extends StatefulWidget {
-  const VendasConferenciaForm({super.key});
+class VendasConferenciaV1Form extends StatefulWidget {
+  const VendasConferenciaV1Form({super.key});
 
   @override
   VendasConferenciaFormState createState() => VendasConferenciaFormState();
 }
 
-class VendasConferenciaFormState extends State<VendasConferenciaForm> {
+class VendasConferenciaFormState extends State<VendasConferenciaV1Form> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _vendaControllerEC = TextEditingController();
   final TextEditingController _codigoProdutoControllerEC =
